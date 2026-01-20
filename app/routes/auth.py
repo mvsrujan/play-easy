@@ -23,6 +23,7 @@ async def login():
         "scope": scope
     }
 
+    print(f"DEBUG: Sending redirect_uri: '{settings.spotify_redirect_uri}'")  # Add this
     auth_url = f"https://accounts.spotify.com/authorize?{urlencode(params)}"
     return RedirectResponse(auth_url)
 
