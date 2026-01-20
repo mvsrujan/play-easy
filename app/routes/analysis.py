@@ -4,6 +4,7 @@ from app.models.session import session_manager
 from app.services.spotify import SpotifyService
 from app.services.llm import GeminiService
 from app.config import settings
+import markdown  # You'll need to: pip install markdown
 
 router = APIRouter(tags=["analysis"])
 
@@ -44,10 +45,13 @@ async def analyze(
                 })
 
         # Analyze with LLM
-        analysis = await llm.analyze_songs(songs_data, instrument)
+        analysis_text = await llm.analyze_songs(songs_data, instrument)
+
+        # Convert markdown to HTML
+        analysis = markdown.markdown(analysis_text)
 
     except Exception as e:
-        analysis = f"Error analyzing songs: {str(e)}"
+        analysis = f"<p>Error analyzing songs: {str(e)}</p>"
 
     # Render results
     html = f"""
@@ -61,7 +65,7 @@ async def analyze(
                 max-width: 900px;
                 margin: 30px auto;
                 padding: 20px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: #191414;
                 min-height: 100vh;
             }}
             .container {{
@@ -70,22 +74,53 @@ async def analyze(
                 border-radius: 10px;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             }}
-            h1 {{ color: #333; margin-bottom: 30px; }}
+            h1 {{ 
+                color: #333; 
+                margin-bottom: 30px;
+                border-bottom: 3px solid #1DB954;
+                padding-bottom: 15px;
+            }}
             .analysis {{
-                white-space: pre-wrap;
                 line-height: 1.8;
                 color: #444;
+            }}
+            .analysis h1 {{
+                color: #1DB954;
+                font-size: 1.8em;
+                margin-top: 30px;
+                margin-bottom: 15px;
+                border-bottom: 2px solid #1DB954;
+                padding-bottom: 10px;
+            }}
+            .analysis h2 {{
+                color: #555;
+                font-size: 1.3em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                padding-left: 10px;
+                border-left: 4px solid #1DB954;
+            }}
+            .analysis p {{
+                margin: 10px 0;
+                padding-left: 15px;
+            }}
+            .analysis ul {{
+                margin: 10px 0;
+                padding-left: 30px;
+            }}
+            .analysis li {{
+                margin: 8px 0;
             }}
             .back-btn {{
                 display: inline-block;
                 margin-top: 20px;
                 padding: 10px 20px;
-                background: #667eea;
+                background: #1DB954;
                 color: white;
                 text-decoration: none;
                 border-radius: 5px;
             }}
-            .back-btn:hover {{ background: #5568d3; }}
+            .back-btn:hover {{ background: #1ed760; }}
         </style>
     </head>
     <body>

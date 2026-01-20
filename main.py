@@ -24,7 +24,7 @@ async def home():
                 max-width: 800px;
                 margin: 50px auto;
                 padding: 20px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: #191414;
                 min-height: 100vh;
             }
             .container {
