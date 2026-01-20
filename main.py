@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from app.routes import auth, analysis
 from app.config import settings
+import os
 
 app = FastAPI(title="Guitar Song Analyzer")
 
