@@ -1,0 +1,91 @@
+# ========================
+# Python bytecode & cache
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# ========================
+# Virtual environments
+# ========================
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+
+# ========================
+# FastAPI / Uvicorn
+# ========================
+*.log
+uvicorn.log
+
+# ========================
+# Environment variables
+# ========================
+.env
+.env.*
+*.env
+
+# ========================
+# Packaging / builds
+# ========================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ========================
+# Testing / coverage
+# ========================
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+
+# ========================
+# Type checkers / linters
+# ========================
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+
+# ========================
+# IDEs & editors
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# ========================
+# OS files
+# ========================
+.DS_Store
+.DS_Store?
+Thumbs.db
+Desktop.ini
+
+# ========================
+# Jupyter
+# ========================
+.ipynb_checkpoints/
+
+# ========================
+# Node (if used for frontend)
+# ========================
+node_modules/
+
+# ========================
+# Misc
+# ========================
+*.tmp
+*.bak
+.cache/
