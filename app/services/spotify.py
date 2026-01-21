@@ -9,7 +9,7 @@ class SpotifyService:
         self.access_token = access_token
         self.headers = {"Authorization": f"Bearer {access_token}"}
 
-    async def get_top_tracks(self, limit: int = 20, time_range: str = "short_term") -> List[Dict[str, Any]]:
+    async def get_top_tracks(self, limit: int = 50, time_range: str = "long_term") -> List[Dict[str, Any]]:
         """Fetch user's top tracks with audio features embedded"""
         async with httpx.AsyncClient() as client:
             response = await client.get(
