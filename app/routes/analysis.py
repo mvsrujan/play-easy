@@ -295,7 +295,7 @@ async def analyze(
         <div class="container">
             <div class="header">
                 <h1>🎸 Your {instrument.title()}-Friendly Songs</h1>
-                <p class="subtitle">Analyzing your top 100 tracks from Spotify</p>
+                <p class="subtitle">Analyzing your top 50 tracks from Spotify</p>
             </div>
             
             <div class="difficulty-section">
